@@ -21,7 +21,7 @@ const SignUp = ({ history }) => {
 
   return (
     <FormGroup className="signup-form">
-      <h1 className="text-center">Welcome</h1>
+      <h1 className="text-center">Sign Up</h1>
       <form onSubmit={handleSignUp}>
         <Label>Email</Label>
         <Input name="email" type="email" placeholder="Email" />
@@ -34,7 +34,7 @@ const SignUp = ({ history }) => {
       <div className="text-center">
         <a href="/login">Login</a>
         <span className="p-2">|</span>
-        <a href="/forgot-pw">Forgot Password</a>
+        <a href="/">Forgot Password</a>
       </div>
     </FormGroup>
   );

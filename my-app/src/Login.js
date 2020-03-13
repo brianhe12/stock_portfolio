@@ -2,6 +2,9 @@ import React, { useCallback, useContext } from "react";
 import { withRouter, Redirect } from "react-router";
 import app from "./base.js";
 import { AuthContext } from "./Auth.js";
+import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import "./App.css";
+import 'bootstrap/dist/css/bootstrap.css';
 
 const Login = ({ history }) => {
   const handleLogin = useCallback(
@@ -27,20 +30,23 @@ const Login = ({ history }) => {
   }
 
   return (
-    <div>
-      <h1>Log in</h1>
+    <FormGroup className="signup-form">
+      <h1 className="text-center">Login</h1>
       <form onSubmit={handleLogin}>
-        <label>
-          Email<br></br>
-          <input name="email" type="email" placeholder="Email" /><br></br><br></br>
-        </label>
-        <label>
-          Password<br></br>
-          <input name="password" type="password" placeholder="Password" /><br></br>
-        </label>
-        <button type="submit">Log in</button>
+        <Label>Email</Label>
+        <Input name="email" type="email" placeholder="Email" />
+        <br></br>
+        <Label>Password</Label>
+          <Input name="password" type="password" placeholder="Password" /><br></br>
+          <button className="btn-lg btn-primary btn-block" type="submit">Sign Up</button>
       </form>
-    </div>
+      <br></br>
+      <div className="text-center">
+        <a href="/signup">Sign Up</a>
+        <span className="p-2">|</span>
+        <a href="/">Forgot Password</a>
+      </div>
+    </FormGroup>
   );
 };
 
