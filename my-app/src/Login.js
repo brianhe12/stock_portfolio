@@ -2,7 +2,7 @@ import React, { useCallback, useContext } from "react";
 import { withRouter, Redirect } from "react-router";
 import app from "./base.js";
 import { AuthContext } from "./Auth.js";
-import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import {FormGroup, Label, Input, Button } from 'reactstrap';
 import "./App.css";
 import 'bootstrap/dist/css/bootstrap.css';
 
@@ -38,7 +38,7 @@ const Login = ({ history }) => {
         <br></br>
         <Label>Password</Label>
           <Input name="password" type="password" placeholder="Password" /><br></br>
-          <button className="btn-lg btn-primary btn-block" type="submit">Login</button>
+          <Button color="primary" className="btn-lg btn-block" type="submit">Login</Button>
       </form>
       <br></br>
       <div className="text-center">

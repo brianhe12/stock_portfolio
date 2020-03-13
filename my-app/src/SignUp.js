@@ -28,7 +28,7 @@ const SignUp = ({ history }) => {
         <br></br>
         <Label>Password</Label>
           <Input name="password" type="password" placeholder="Password" /><br></br>
-          <button className="btn-lg btn-primary btn-block" type="submit">Sign Up</button>
+          <Button color="primary" className="btn-lg btn-block" type="submit">Sign Up</Button>
       </form>
       <br></br>
       <div className="text-center">
