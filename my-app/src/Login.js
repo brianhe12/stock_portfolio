@@ -30,7 +30,7 @@ const Login = ({ history }) => {
   }
 
   return (
-    <FormGroup className="signup-form">
+    <FormGroup className="signup-login-form">
       <h1 className="text-center">Login</h1>
       <form onSubmit={handleLogin}>
         <Label>Email</Label>
@@ -38,7 +38,7 @@ const Login = ({ history }) => {
         <br></br>
         <Label>Password</Label>
           <Input name="password" type="password" placeholder="Password" /><br></br>
-          <button className="btn-lg btn-primary btn-block" type="submit">Sign Up</button>
+          <button className="btn-lg btn-primary btn-block" type="submit">Login</button>
       </form>
       <br></br>
       <div className="text-center">

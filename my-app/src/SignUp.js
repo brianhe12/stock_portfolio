@@ -20,7 +20,7 @@ const SignUp = ({ history }) => {
   }, [history]);
 
   return (
-    <FormGroup className="signup-form">
+    <FormGroup className="signup-login-form">
       <h1 className="text-center">Sign Up</h1>
       <form onSubmit={handleSignUp}>
         <Label>Email</Label>

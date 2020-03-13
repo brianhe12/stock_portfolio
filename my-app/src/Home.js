@@ -2,24 +2,22 @@ import React from "react";
 import app from "./base";
 import { Component } from 'react';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import "./App.css";
+import 'bootstrap/dist/css/bootstrap.css';
 
-class Home extends Component {
-    render() {
-        return (
-            <>
-              <h1>Home</h1>
-              <Button onClick={() => app.auth().signOut()}>Sign out</Button>
-            </>
-          );
-    }
-}
-// const Home = () => {
-//   return (
-//     <>
-//       <h1>Home</h1>
-//       <button onClick={() => app.auth().signOut()}>Sign out</button>
-//     </>
-//   );
-// };
+
+var stocks = ['FB','AMZN','APPL','GOOG','MSFT']
+console.log(stocks)
+
+const Home = () => {
+  return (
+    <div>
+      <div className="portfolio">
+        <h1>Portfolio ($5000)</h1>
+      </div>
+        <Button color="danger" onClick={() => app.auth().signOut()}>Sign out</Button>
+    </div>
+  );
+};
 
 export default Home;
