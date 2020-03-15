@@ -46,12 +46,21 @@ db.userHoldings.find({ email: 'test@test.com' })
 https://flask-pymongo.readthedocs.io/en/latest/
 """
 from flask import Flask
+import mongo_function
+import json
+from bson import ObjectId
 
 app = Flask(__name__)
-  
+
 @app.route("/")
-def hello():
-    return "Hello World"
+def test():
+  class JSONEncoder(json.JSONEncoder):
+    def default(self, o):
+        if isinstance(o, ObjectId):
+            return str(o)
+        return json.JSONEncoder.default(self, o)
+        
+  return JSONEncoder().encode(mongo_function.buy_sell_stock("test@test.com","GOOG",13,"Buy"))
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
