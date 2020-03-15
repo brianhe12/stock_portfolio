@@ -22,4 +22,8 @@ import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 # current pip is version 19.2.3
 pip install flask
 
-pip install Flask-PyMongo
+pip install pymongo
+
+pip install pymongo[srv]
+
+pip install python-dotenv
