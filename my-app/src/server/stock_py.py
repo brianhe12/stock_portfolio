@@ -46,21 +46,43 @@ db.userHoldings.find({ email: 'test@test.com' })
 https://flask-pymongo.readthedocs.io/en/latest/
 """
 from flask import Flask
+from flask import jsonify
+from flask_cors import CORS
 import mongo_function
 import json
 from bson import ObjectId
+from pymongo import MongoClient
+import os
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route("/")
 def main_function():
-  class JSONEncoder(json.JSONEncoder):
-    def default(self, o):
-        if isinstance(o, ObjectId):
-            return str(o)
-        return json.JSONEncoder.default(self, o)
+  # class JSONEncoder(json.JSONEncoder):
+  #   def default(self, o):
+  #       if isinstance(o, ObjectId):
+  #           return str(o)
+  #       return json.JSONEncoder.default(self, o)
         
-  return JSONEncoder().encode(mongo_function.buy_sell_stock("test@test.com","GOOG",13,"Buy"))
+  #return JSONEncoder().encode(mongo_function.buy_sell_stock("test@test.com","GOOG",13,"Buy"))
+  return jsonify(mongo_function.buy_sell_stock("test@test.com","GOOG",13,"Buy"))
 
+@app.route("/d")
+def fill_charts():
+  return jsonify({"symbol": "GOOG", "amount": 4, "currentPrice": 330}, {"symbol": "NFLX", "amount": 4, "currentPrice": 330})
+
+# WORKING -> PRINTS TO CHART
+@app.route("/test")
+def test_again():
+  from dotenv import load_dotenv
+  load_dotenv()
+  # Connect with Mongodb Atlas
+  client = MongoClient(os.getenv("MONGO_STRING"))
+  db=client.userHoldings
+  myCursor = db.users.find( {"email": "test@test.com"} )
+  return jsonify(myCursor[0]['portfolio'])
+
+  
 if __name__ == "__main__":
     app.run(debug=True)
