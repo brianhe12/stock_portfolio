@@ -46,16 +46,11 @@ db.userHoldings.find({ email: 'test@test.com' })
 https://flask-pymongo.readthedocs.io/en/latest/
 """
 from flask import Flask
-from flask_pymongo import PyMongo
-from flask import jsonify
 
 app = Flask(__name__)
-app.config["MONGO_URI"] = "mongodb://localhost:27017/stocks"
-mongo = PyMongo(app)
-
+  
 @app.route("/")
 def hello():
-    user = mongo.db.userHoldings.find({ "email": 'test@test.com' })
     return "Hello World"
 
 if __name__ == "__main__":

@@ -12,6 +12,9 @@ db.user.insert({
 # Index into specific value
 # result = db.users.find_one({"email": "<<email>>"})
 # print(result['portfolio']['APPL'])
+
+# This query returns JSON if exists, and None if it doesn't exist
+exists = db.users.find_one({ "$and": [ { "email": "test@test.com" }, { "portfolio.NFLX":{"$exists":True} } ] })
 """
 
 import datetime
@@ -38,39 +41,35 @@ def buy_sell_stock(user,stock,quantity,operation):
             "date": str(datetime.datetime.utcnow()),
             "cash": 5000
         })
-    # Increase/Decrease user holdings of $stock by $amount
+    
     if operation == "Sell":
         quantity = quantity * -1
 
-    result = db.users.find_one({"email": user})
+    # Checks to see if a user with a certain email has an entry for the stock they are trying to Buy/Sell
+    exists = db.users.find_one({ "$and": [ { "email": user }, { "portfolio." + stock:{"$exists":True} } ] })
 
-    if len(result['portfolio']) == 0 and operation == "Sell":
-        print("ERROR: User does not have any stock in portfolio")
+    # If query exists, we can check index
+    if exists != None:
+        if result['portfolio'][stock] + quantity < 0:
+            print("You do not have enough " + stock + " stock for this action")
+            return result
+    # If query does not exist & we try to sell, throw an error
+    elif exists == None and operation == "Sell":
+        print("No inventory of " + stock + " to sell.")
         return result
 
-    if operation == "Sell" and result['portfolio'][stock] + quantity < 0:
-        print("You do not have enough " + stock + " stock for this action")
-        return result
-
+    # Update and Increase/Decrease user holdings of $stock by $amount
     query = { "email": user }
-    newValues = { "$inc": { "portfolio."+ stock: quantity } }
+    newValues = { "$inc": { "portfolio." + stock: quantity } }
     db.users.update_one(query, newValues)
     return db.users.find_one({"email": user})
     
-#result = buy_sell_stock("test@test.com","GOOG",58,"Sell")
-#print(result)
 
-load_dotenv()
-# Connect with Mongodb Atlas
-client = MongoClient(os.getenv("MONGO_STRING"))
-db=client.userHoldings
+# load_dotenv()
+# client = MongoClient(os.getenv("MONGO_STRING"))
+# db=client.userHoldings
 
-# This query returns JSON if exists, and None if it doesn't exist
-exists = db.users.find_one({ "$and": [ { "email": "test@test.com" }, { "portfolio.NFLX":{"$exists":True} } ] })
+# result = buy_sell_stock("test2@test.com","AMZN",16,"Buy")
+# print(result)
 
-print(exists == None)
-
-
-
-
-print('Finish')
+# print('Finish')
