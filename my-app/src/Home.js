@@ -13,7 +13,8 @@ class Home extends Component {
     var currentPrice = 300000;
     super(props);
     this.state = {
-      portfolioValue: 0,
+      portfolioValue: 6917,
+      cash: 5000,
       columnDefs: [
         { headerName: "Stock", field: "symbol"},
         { headerName: "Price", field: "price", 
@@ -48,8 +49,9 @@ class Home extends Component {
 
   render() {
     return (
-      <div>
-        <Label className="portfolio-label">Portfolio Value: {this.state.portfolioValue}</Label>
+      <div className="home-page">
+        <Label className="portfolio-label">Portfolio: ${this.state.portfolioValue}</Label>
+        <Label className="cash-label">${this.state.cash}</Label>
         <Button color="danger" style={{position: 'absolute', top: 10, right: 10}} onClick={() => app.auth().signOut()}>Logout</Button>
         <div className="ag-theme-balham" style={ {height: '500px', width: '402px'} }>
           <AgGridReact
@@ -58,6 +60,18 @@ class Home extends Component {
               rowData={this.state.rowData}>
           </AgGridReact>
         </div>
+        {/*TODO: Add Functionality */}
+        <FormGroup className="purchase">
+          <Label>Ticker</Label>
+          <Input type="email" name="email" id="exampleEmail" placeholder="Search for symbols" />
+          <Label for="trade">Trade</Label>
+          <Input type="select" name="select" id="trade">
+            <option>Buy</option>
+            <option>Sell</option>
+          </Input>
+          <br></br>
+          <Button>Confirm</Button>
+        </FormGroup>
         <table className="transactions">
         <tr>
           <th>Stock</th>

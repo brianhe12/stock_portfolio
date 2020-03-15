@@ -10,23 +10,38 @@
 .ag-theme-balham {
   position: absolute;
   left: 650px;
-  top: 100px;
+  top: 180px;
 }
 
 .portfolio-label{
   position: absolute;
   left: 650px;
   top: 70px;
+  color: green;
+  font-size: 40px;
+}
+
+.cash-label{
+  position: absolute;
+  left: 100px;
+  top: 70px;
+  color: green;
+  font-size: 40px;
 }
 
 .transactions {
   position: absolute;
   right: 0px;
-  top: 100px;
+  top: 170px;
   border-collapse: collapse;
   width: 40%;
-  border: 4px solid #dddddd;
   text-align: left;
   padding: 5px;
-  
+}
+
+.purchase {
+  position: absolute;
+  left: 100px;
+  top: 148px;
+  width: 20%;
 }
