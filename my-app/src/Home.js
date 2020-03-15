@@ -18,7 +18,7 @@ class Home extends Component {
       columnDefs: [
         { headerName: "Stock", field: "symbol"},
         { headerName: "Holdings", field: "amount"},
-        { headerName: "Price", field: "price", 
+        { headerName: "Price", field: "currentPrice", 
           cellStyle: function(params){
             if (params.value === openPrice){
               return {color:'slategray'}
@@ -32,9 +32,9 @@ class Home extends Component {
           }}],
       //TODO: Use HTML5 Fetch to get data from python flask back-end in {symbol: "string", price: int} format
       rowData: [
-        { symbol: "APPL", amount: 3, price: 335000 },
-        { symbol: "GOOG", amount: 4, price: 32000 },
-        { symbol: "NFLX", amount: 5, price: 300000 }],
+        { symbol: "APPL", amount: 3, currentPrice: 335000 },
+        { symbol: "GOOG", amount: 4, currentPrice: 32000 },
+        { symbol: "NFLX", amount: 5, currentPrice: 300000 }],
 
       // TransactionHistoryDef: [
       //   { headerName: "Stock", field: "symbol"},
@@ -52,6 +52,7 @@ class Home extends Component {
     return (
       <div className="home-page">
         <Label className="portfolio-label">Portfolio: ${this.state.portfolioValue}</Label>
+        <Label className="buying-power-label">Buying Power:</Label>
         <Label className="cash-label">${this.state.cash}</Label>
         <Label className="past-transactions-label">Past Transactions</Label>
         <Button color="danger" style={{position: 'absolute', top: 10, right: 10}} onClick={() => app.auth().signOut()}>Sign Out</Button>
@@ -75,28 +76,28 @@ class Home extends Component {
           <Button>Confirm</Button>
         </FormGroup>
         <table className="transactions">
-        <tr>
-          <th>Stock</th>
-          <th>Transaction</th>
-          <th># of Shares</th>
-          <th>Price per Share</th>
-          <th>Time</th>
-        </tr>
-        <tr>
-          <td>APPL</td>
-          <td>BUY</td>
-          <td>3</td>
-          <td>129.38</td>
-          <td>Friday</td>
-        </tr>
-        <tr>
-          <td>GOOG</td>
-          <td>BUY</td>
-          <td>3</td>
-          <td>129.38</td>
-          <td>Friday</td>
-        </tr>
-      </table>
+          <tr>
+            <th>Stock</th>
+            <th>Transaction</th>
+            <th># of Shares</th>
+            <th>Price per Share</th>
+            <th>Time</th>
+          </tr>
+          <tr>
+            <td>APPL</td>
+            <td>BUY</td>
+            <td>3</td>
+            <td>129.38</td>
+            <td>Friday</td>
+          </tr>
+          <tr>
+            <td>GOOG</td>
+            <td>BUY</td>
+            <td>3</td>
+            <td>129.38</td>
+            <td>Friday</td>
+          </tr>
+        </table>
 
       </div>
     );

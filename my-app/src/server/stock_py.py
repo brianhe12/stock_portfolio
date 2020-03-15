@@ -53,7 +53,7 @@ from bson import ObjectId
 app = Flask(__name__)
 
 @app.route("/")
-def test():
+def main_function():
   class JSONEncoder(json.JSONEncoder):
     def default(self, o):
         if isinstance(o, ObjectId):

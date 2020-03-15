@@ -22,6 +22,14 @@
   font-family: 'Courier New', Courier, monospace;
 }
 
+.buying-power-label{
+  position: absolute;
+  left: 100px;
+  top: 20px;
+  color: green;
+  font-size: 40px;
+  font-family: 'Courier New', Courier, monospace;
+}
 .cash-label{
   position: absolute;
   left: 100px;
