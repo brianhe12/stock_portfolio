@@ -10,19 +10,20 @@ import 'ag-grid-community/dist/styles/ag-theme-balham.css';
 
 class Home extends Component {
   constructor(props) {
-    var currentPrice = 300000;
+    var openPrice = 300000;
     super(props);
     this.state = {
       portfolioValue: 6917,
       cash: 5000,
       columnDefs: [
         { headerName: "Stock", field: "symbol"},
+        { headerName: "Holdings", field: "amount"},
         { headerName: "Price", field: "price", 
           cellStyle: function(params){
-            if (params.value === currentPrice){
+            if (params.value === openPrice){
               return {color:'slategray'}
             }
-            else if (params.value > currentPrice){
+            else if (params.value > openPrice){
               return {color:'mediumseagreen'}
             }
             else {
@@ -31,12 +32,9 @@ class Home extends Component {
           }}],
       //TODO: Use HTML5 Fetch to get data from python flask back-end in {symbol: "string", price: int} format
       rowData: [
-        { symbol: "APPL", price: 335000 },
-        { symbol: "GOOG", price: 32000 },
-        { symbol: "NFLX", price: 300000 },
-        { symbol: "FIT", price: 257130 },
-        { symbol: "VOO", price: 27361 },
-        { symbol: "VTSAX", price: 376281 }],
+        { symbol: "APPL", amount: 3, price: 335000 },
+        { symbol: "GOOG", amount: 4, price: 32000 },
+        { symbol: "NFLX", amount: 5, price: 300000 }],
 
       // TransactionHistoryDef: [
       //   { headerName: "Stock", field: "symbol"},
@@ -55,8 +53,9 @@ class Home extends Component {
       <div className="home-page">
         <Label className="portfolio-label">Portfolio: ${this.state.portfolioValue}</Label>
         <Label className="cash-label">${this.state.cash}</Label>
+        <Label className="past-transactions-label">Past Transactions</Label>
         <Button color="danger" style={{position: 'absolute', top: 10, right: 10}} onClick={() => app.auth().signOut()}>Sign Out</Button>
-        <div className="ag-theme-balham" style={ {height: '500px', width: '402px'} }>
+        <div className="ag-theme-balham" style={ {height: '500px', width: '602px'} }>
           <AgGridReact
               enableSorting={true}
               columnDefs={this.state.columnDefs}
