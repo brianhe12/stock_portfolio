@@ -33,7 +33,10 @@ class Home extends Component {
       rowData: [
         { symbol: "APPL", price: 335000 },
         { symbol: "GOOG", price: 32000 },
-        { symbol: "NFLX", price: 300000 },],
+        { symbol: "NFLX", price: 300000 },
+        { symbol: "FIT", price: 257130 },
+        { symbol: "VOO", price: 27361 },
+        { symbol: "VTSAX", price: 376281 }],
 
       // TransactionHistoryDef: [
       //   { headerName: "Stock", field: "symbol"},
@@ -52,7 +55,7 @@ class Home extends Component {
       <div className="home-page">
         <Label className="portfolio-label">Portfolio: ${this.state.portfolioValue}</Label>
         <Label className="cash-label">${this.state.cash}</Label>
-        <Button color="danger" style={{position: 'absolute', top: 10, right: 10}} onClick={() => app.auth().signOut()}>Logout</Button>
+        <Button color="danger" style={{position: 'absolute', top: 10, right: 10}} onClick={() => app.auth().signOut()}>Sign Out</Button>
         <div className="ag-theme-balham" style={ {height: '500px', width: '402px'} }>
           <AgGridReact
               enableSorting={true}
