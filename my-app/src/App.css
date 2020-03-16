@@ -19,7 +19,7 @@
   top: 70px;
   color: green;
   font-size: 40px;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: Calibri;
 }
 
 .buying-power-label{
@@ -28,7 +28,7 @@
   top: 20px;
   color: green;
   font-size: 40px;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: Calibri;
 }
 .cash-label{
   position: absolute;
@@ -36,15 +36,7 @@
   top: 70px;
   color: green;
   font-size: 40px;
-  font-family: 'Courier New', Courier, monospace;
-}
-
-.past-transactions-label {
-  position: absolute;
-  right: 350px;
-  top: 70px;
-  font-size: 40px;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: Calibri;
 }
 
 .transactions {
@@ -63,4 +55,10 @@
   left: 100px;
   top: 148px;
   width: 20%;
+}
+
+.cards {
+  position: absolute;
+  left: 500px;
+  top:20px;
 }

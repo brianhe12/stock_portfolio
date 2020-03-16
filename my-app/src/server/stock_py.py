@@ -53,34 +53,39 @@ import json
 from bson import ObjectId
 from pymongo import MongoClient
 import os
+import datetime
+
+from dotenv import load_dotenv
+load_dotenv()
+# Connect with Mongodb Atlas
+client = MongoClient(os.getenv("MONGO_STRING"))
+db=client.userHoldings
 
 app = Flask(__name__)
 CORS(app)
 
-@app.route("/")
-def main_function():
-  # class JSONEncoder(json.JSONEncoder):
-  #   def default(self, o):
-  #       if isinstance(o, ObjectId):
-  #           return str(o)
-  #       return json.JSONEncoder.default(self, o)
+# Route to buy/sell
+@app.route('/<email>/<stock>/<int:amount>/<operation>', methods=['GET'])
+def main_function(email,stock,amount,operation):
+  class JSONEncoder(json.JSONEncoder):
+    def default(self, o):
+        if isinstance(o, ObjectId):
+            return str(o)
+        return json.JSONEncoder.default(self, o)
         
-  #return JSONEncoder().encode(mongo_function.buy_sell_stock("test@test.com","GOOG",13,"Buy"))
-  return jsonify(mongo_function.buy_sell_stock("test@test.com","GOOG",13,"Buy"))
+  return JSONEncoder().encode(mongo_function.buy_sell_stock(email,stock,amount,operation))
 
-@app.route("/d")
-def fill_charts():
-  return jsonify({"symbol": "GOOG", "amount": 4, "currentPrice": 330}, {"symbol": "NFLX", "amount": 4, "currentPrice": 330})
+# Route to cash update
+@app.route('/cashUpdate/<email>')
+def cash_update(email):
+  result = db.users.find( {"email": email} )
+  return jsonify(result[0]['cash'])
 
-# WORKING -> PRINTS TO CHART
-@app.route("/test")
-def test_again():
-  from dotenv import load_dotenv
-  load_dotenv()
-  # Connect with Mongodb Atlas
-  client = MongoClient(os.getenv("MONGO_STRING"))
-  db=client.userHoldings
-  myCursor = db.users.find( {"email": "test@test.com"} )
+
+# Route to fill portfolio UI
+@app.route("/<email>")
+def test_again(email):
+  myCursor = db.users.find( {"email": email} )
   return jsonify(myCursor[0]['portfolio'])
 
   

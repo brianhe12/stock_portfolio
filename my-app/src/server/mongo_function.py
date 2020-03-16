@@ -43,7 +43,6 @@ def buy_sell_stock(user,stock,amount,operation):
             "date": str(datetime.datetime.utcnow()),
             "cash": 5000
         })
-    
     if operation == "Sell":
         amount = amount * -1
 
@@ -63,7 +62,12 @@ def buy_sell_stock(user,stock,amount,operation):
 
     # If query does not exist & we try to buy, add it in
     elif exists == None and operation == "Buy":
-        db.users.update_one({"email": user}, {"$push":{"portfolio": { "symbol": stock,"amount" : amount,"currentPrice": 3000 }}})
+        # Error check users cash
+        if db.users.find( {"email": user} )[0]['cash'] - 100 * amount <= 0:
+            return "Unable to Buy"
+
+        db.users.update({"email": "a@a.com"}, {"$inc":{"cash": -100 * amount,}} )
+        db.users.update_one({"email": user}, {"$push":{"portfolio": { "symbol": stock,"amount" : amount,"currentPrice": 100 }}})
         return db.users.find_one({"email": user})
 
     # Update if exists
@@ -72,6 +76,11 @@ def buy_sell_stock(user,stock,amount,operation):
         if result['portfolio'][i]['symbol'] == stock:
             index = i
             break
+    # Error check users cash
+    if db.users.find( {"email": user} )[0]['cash'] - 100*amount <= 0:
+        return "Unable to Buy"
+
+    db.users.update({"email": user}, {"$inc":{"cash": -100 * amount,}} )
     db.users.update_one({"email": user}, {"$inc":{"portfolio." + str(index) +".amount": amount}})
     return db.users.find_one({"email": user})
     
@@ -80,22 +89,25 @@ def buy_sell_stock(user,stock,amount,operation):
 # client = MongoClient(os.getenv("MONGO_STRING"))
 # db=client.userHoldings
 
-# result = buy_sell_stock("test3@test.com","APPL",20,"Sell")
-# print(result)
+# # result = buy_sell_stock("test3@test.com","APPL",20,"Sell")
+# # print(result)
 
 
-# db.users.insert_one({
-#             "email": "NewTest@test.com",
-#             "portfolio": [
-#             {"symbol": "GOOG","amount": 4,"currentPrice": 3500},
-#             {"symbol": "AMZN","amount": 5,"currentPrice": 32500},
-#             ],
-#             "date": str(datetime.datetime.utcnow()),
-#             "cash": 5000
-#         })
+# # db.users.insert_one({
+# #             "email": "NewTest@test.com",
+# #             "portfolio": [
+# #             {"symbol": "GOOG","amount": 4,"currentPrice": 3500},
+# #             {"symbol": "AMZN","amount": 5,"currentPrice": 32500},
+# #             ],
+# #             "date": str(datetime.datetime.utcnow()),
+# #             "cash": 5000
+# #         })
 
-#result = db.users.find_one({"email": "NewTest@test.com"})
-#db.users.update_one({"email": "NewTest@test.com"},{"$inc": {"items." + str(2) + ".count": 1}}) 
-#db.users.update_one({"email": "NewTest@test.com"}, {"$inc":{"portfolio.0.amount": 2}})
-#print(db.users.find_one({"email": "NewTest@test.com"}))
-# print('Finish')
+# #result = db.users.find_one({"email": "NewTest@test.com"})
+
+
+# result = db.users.find( {"email": "d@d.com"} )
+# db.users.update({"email": "d@d.com"}, {"$inc":{"cash": -100,}} )
+# print (result[0]['cash'])
+
+# pprint(buy_sell_stock("a@a.com","APPL",550,"Buy"))
