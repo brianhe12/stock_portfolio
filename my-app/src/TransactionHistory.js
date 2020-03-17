@@ -3,7 +3,6 @@ import { Component } from 'react';
 import Cards from './components/cards'
 import app from "./base";
 import Navbar from './components/navbar';
-import { Nav } from 'reactstrap';
 
 class App extends Component {
     constructor(props){

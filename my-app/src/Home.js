@@ -1,14 +1,13 @@
 import React from "react";
 import app from "./base";
 import { Component } from 'react';
-import { Button, Form, FormGroup, Label, Input} from 'reactstrap';
+import { Label, Input} from 'reactstrap';
 import "./App.css";
 import 'bootstrap/dist/css/bootstrap.css';
 import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-balham.css';
 import Navbar from './components/navbar';
-
 
 function fetch_from_flask(email,stock,amount,operation){
   var url = 'http://127.0.0.1:5000/' + email + '/' + stock + '/' + amount + '/' + operation;
@@ -27,6 +26,7 @@ function fetch_from_flask(email,stock,amount,operation){
   });
   window.location.reload(); 
 }
+
 class Home extends Component {
   constructor(props) {
     var openPrice = 300000;
@@ -58,6 +58,8 @@ class Home extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
+  // Backend calls to Flask
   componentDidMount() {
     var url = 'http://127.0.0.1:5000/';
     fetch(url + this.state.userEmail)

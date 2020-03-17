@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import { withRouter } from "react-router";
 import app from "./base";
-import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Button, FormGroup, Label, Input } from 'reactstrap';
 import "./App.css";
 import 'bootstrap/dist/css/bootstrap.css';
 import myPng from './images/profile_picture.png'
