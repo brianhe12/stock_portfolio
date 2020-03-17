@@ -63,7 +63,7 @@ def buy_sell_stock(user,stock,amount,operation):
     # If query does not exist & we try to buy, add it in
     elif exists == None and operation == "Buy":
         # Error check users cash
-        if db.users.find( {"email": user} )[0]['cash'] - 100 * amount <= 0:
+        if db.users.find( {"email": user} )[0]['cash'] - 100 * amount < 0:
             return "Unable to Buy"
 
         # If we have enough cash, then we can buy #SUCCESS
@@ -79,7 +79,7 @@ def buy_sell_stock(user,stock,amount,operation):
             index = i
             break
     # Error check users cash
-    if db.users.find( {"email": user} )[0]['cash'] - 100*amount <= 0:
+    if db.users.find( {"email": user} )[0]['cash'] - 100*amount < 0:
         return "Unable to Buy"
 
     db.users.update({"email": user}, {"$inc":{"cash": -100 * amount,}} )
