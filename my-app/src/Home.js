@@ -25,7 +25,7 @@ function fetch_from_flask(email,stock,amount,operation){
     console.log(data);
     return data
   });
-
+  window.location.reload(); 
 }
 class Home extends Component {
   constructor(props) {
@@ -85,7 +85,7 @@ class Home extends Component {
     })
 }
 
-  handleSubmit = (event) => {
+  handleSubmit = event => {
     event.preventDefault()
     alert(this.state.userEmail + ":" + this.state.operation + " " + this.state.quantity + " of " + this.state.symbol)
     fetch_from_flask(this.state.userEmail, this.state.symbol, this.state.quantity, this.state.operation);
