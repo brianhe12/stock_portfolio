@@ -24,3 +24,9 @@ def grab_stock_data(stock):
     prices.append(round(data["iexRealtimePrice"],2))
 
     return prices
+
+a = grab_stock_data("AAPL")
+print(a[0])
+print(a[1])
+
+print(round(a[1] - a[0],2))

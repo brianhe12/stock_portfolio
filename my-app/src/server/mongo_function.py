@@ -57,8 +57,8 @@ def buy_sell_stock(user,stock,amount,operation):
 
         # If user has enough cash, then we can execute their order.
         db.users.update({"email": "a@a.com"}, {"$inc":{"cash": - stock_data[1] * amount,}} )
-        db.users.update_one({"email": user}, {"$push":{"portfolio": { "symbol": stock,"amount" : amount,"currentPrice": stock_data[1] }}})
-        db.users.update_one({"email": user}, {"$push":{"history": { "stock": stock,"transaction" : operation,"numShares": amount, "pricePerShare": 338, "Time": str(datetime.datetime.utcnow())}}})
+        db.users.update_one({"email": user}, {"$push":{"portfolio": { "symbol": stock,"amount" : amount,"currentPrice": stock_data[1], "dayChange": round(stock_data[1]-stock_data[0],2) }}})
+        db.users.update_one({"email": user}, {"$push":{"history": { "stock": stock,"transaction" : operation,"numShares": amount, "pricePerShare": stock_data[1], "Time": str(datetime.datetime.utcnow())}}})
         return db.users.find_one({"email": user})
 
     # User exists. Execute their order.
@@ -71,9 +71,17 @@ def buy_sell_stock(user,stock,amount,operation):
     if db.users.find( {"email": user} )[0]['cash'] - stock_data[1] * amount < 0:
         return "Unable to Buy"
 
+    # Update stock's opening price --> Done at the beginning of the day
+
+    # Increase/Decrease cash in user's account after they buy/sell
     db.users.update({"email": user}, {"$inc":{"cash": - stock_data[1] * amount,}} )
+
+    # Increase/Decrease amount of stocks in user's account after they buy/sell
     db.users.update_one({"email": user}, {"$inc":{"portfolio." + str(index) +".amount": amount}})
+
+    # Add transaction into history
     db.users.update_one({"email": user}, {"$push":{"history": { "stock": stock,"transaction" : operation,"numShares": amount, "pricePerShare": 338, "Time": str(datetime.datetime.utcnow())}}})
+    
     return db.users.find_one({"email": user})
     
 # Testing---------

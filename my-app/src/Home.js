@@ -29,7 +29,7 @@ function fetch_from_flask(email,stock,amount,operation){
 
 class Home extends Component {
   constructor(props) {
-    var openPrice = 300000;
+    var zero = 0;
     super(props);
     this.state = {
       symbol: '',
@@ -41,18 +41,21 @@ class Home extends Component {
       columnDefs: [
         { headerName: "Stock", field: "symbol"},
         { headerName: "Holdings", field: "amount"},
-        { headerName: "Price", field: "currentPrice", 
+        { headerName: "Price ($)", field: "currentPrice",},
+        { headerName: "Day Change ($)", field: "dayChange",
           cellStyle: function(params){
-            if (params.value === openPrice){
-              return {color:'slategray'}
-            }
-            else if (params.value > openPrice){
-              return {color:'mediumseagreen'}
-            }
-            else {
-              return {color: 'red'}
-            }
-          }}],
+          if (params.value === zero){
+            console.log(params.value)
+            return {color:'slategray'}
+          }
+          else if (params.value > zero){
+            return {color:'mediumseagreen'}
+          }
+          else {
+            return {color: 'red'}
+          }},
+        }
+      ],
       rowData: [],
     };
     this.handleChange = this.handleChange.bind(this);
@@ -112,7 +115,7 @@ class Home extends Component {
         <Label className="buying-power-label">BUYING POWER</Label>
         <Label className="cash-label">${this.state.cash}</Label>
         {/* Portfolio Chart */}
-        <div className="ag-theme-balham" style={ {height: '240px', width: '602px'} }>
+        <div className="ag-theme-balham" style={ {height: '240px', width: '802px'} }>
           <AgGridReact
               enableSorting={true}
               columnDefs={this.state.columnDefs}
