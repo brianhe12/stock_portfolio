@@ -87,7 +87,7 @@ class Home extends Component {
 
   handleSubmit = event => {
     event.preventDefault()
-    alert(this.state.userEmail + ":" + this.state.operation + " " + this.state.quantity + " of " + this.state.symbol)
+    // alert(this.state.userEmail + ":" + this.state.operation + " " + this.state.quantity + " of " + this.state.symbol)
     fetch_from_flask(this.state.userEmail, this.state.symbol, this.state.quantity, this.state.operation);
   }
 

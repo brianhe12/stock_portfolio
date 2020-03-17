@@ -5,7 +5,7 @@ import { AuthContext } from "./Auth.js";
 import {FormGroup, Label, Input, Button } from 'reactstrap';
 import "./App.css";
 import 'bootstrap/dist/css/bootstrap.css';
-import mySvg from './images/profile_picture.svg'
+import mySvg from './images/profile_picture.png'
 
 const Login = ({ history }) => {
   const handleLogin = useCallback(
