@@ -92,8 +92,8 @@ def buy_sell_stock(user,stock,amount,operation):
 # client = MongoClient(os.getenv("MONGO_STRING"))
 # db=client.userHoldings
 
-# # result = buy_sell_stock("test3@test.com","APPL",20,"Sell")
-# # print(result)
+# result = buy_sell_stock("test3@test.com","APPL",20,"Sell")
+# print(result)
 
 
 # # db.users.insert_one({
@@ -109,7 +109,16 @@ def buy_sell_stock(user,stock,amount,operation):
 # #result = db.users.find_one({"email": "NewTest@test.com"})
 
 
-# result = db.users.find( {"email": "d@d.com"} )
+# result = db.users.find( {"email": "a@a.com"} )
+# totalSum = 0
+# for i in range(len(result[0]['portfolio'])):
+#     totalSum += result[0]['portfolio'][i]['currentPrice'] * result[0]['portfolio'][i]['amount']
+# return totalSum
+
+# # pprint(len(result[0]['portfolio'][i]['currentPrice']))
+# print(totalSum)
+
+
 # db.users.update({"email": "d@d.com"}, {"$inc":{"cash": -100,}} )
 # print (result[0]['cash'])
 

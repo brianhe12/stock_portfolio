@@ -75,19 +75,28 @@ def main_function(email,stock,amount,operation):
         
   return JSONEncoder().encode(mongo_function.buy_sell_stock(email,stock,amount,operation))
 
-# Route to cash update
+# Route to cash 
 @app.route('/cashUpdate/<email>')
 def cash_update(email):
   myCursor = db.users.find( {"email": email} )
   return jsonify(myCursor[0]['cash'])
 
-# Route to fill portfolio UI
+# Route to portolfio
+@app.route('/portfolioUpdate/<email>')
+def portfolio_update(email):
+  myCursor = db.users.find( {"email": email} )
+  totalSum = 0
+  for i in range(len(myCursor[0]['portfolio'])):
+      totalSum += myCursor[0]['portfolio'][i]['currentPrice'] * myCursor[0]['portfolio'][i]['amount']
+  return jsonify(totalSum)
+
+# Route to portfolio UI
 @app.route("/<email>")
 def test_again(email):
   myCursor = db.users.find( {"email": email} )
   return jsonify(myCursor[0]['portfolio'])
 
-# Route to fill Transaction History
+# Route to Transaction History
 @app.route('/transactionHistory/<email>')
 def transaction_history(email):
   myCursor = db.users.find( {"email": email} )
