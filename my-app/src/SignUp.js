@@ -24,7 +24,7 @@ const SignUp = ({ history }) => {
     <div>
       <center><img src={mySvg} alt="Kiwi standing on oval" width={300} height={300}></img></center>
       <FormGroup className="signup-login-form">
-      <h1 className="text-center">Sign Up</h1>
+      <h1 className="title">Sign Up</h1>
       <form onSubmit={handleSignUp}>
         <Label>Email</Label>
         <Input name="email" type="email" placeholder="Email" />

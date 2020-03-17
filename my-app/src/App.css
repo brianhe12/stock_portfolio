@@ -1,3 +1,9 @@
+/* TITLE */
+.title {
+  text-align: center;
+  font-family: 'Courier New', Courier, monospace;
+}
+/* SIGNUP/LOGIN */
 .signup-login-form {
   width: 100%;
   max-width: 330px;
@@ -6,6 +12,7 @@
   margin-top: 0px;
   height: 100%
 }
+
 /* PORTFOLIO */
 .ag-theme-balham {
   position: absolute;
@@ -30,6 +37,7 @@
   font-size: 60px;
   font-family: Calibri;
 }
+
 /* BUYING POWER */
 .buying-power-label{
   position: absolute;
@@ -39,6 +47,7 @@
   font-size: 18px;
   font-family: Calibri;
 }
+
 .cash-label{
   position: absolute;
   right: 30%;
@@ -54,6 +63,7 @@
   top: 32%;
   width: 20%;
 }
+
 /*BUTTON*/
 .button {
   background-color: #914FC3;
