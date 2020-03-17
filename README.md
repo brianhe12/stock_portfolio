@@ -27,3 +27,5 @@ pip install pymongo[srv]
 pip install python-dotenv
 
 pip install -U flask-cors
+
+pip install requests
