@@ -11,39 +11,6 @@ Much faster in most operations, especially with a lot of data
 Cheat Sheet
 https://gist.github.com/bradtraversy/f407d642bdc3b31681bc7e56d95485b6
 
-# How our database should look
-db.userHoldings.insert({
-  email: 'test@test.com',
-  portfolio: {
-    APPL: 3,
-    GOOG: 4
-  },
-  date: Date(),
-})
-
-db.userHoldings.insert({
-  email: 'user1@test.com',
-  portfolio: {
-    AMZN: 3,
-    MSFT: 1
-  },
-  date: Date(),
-})
-
-# Increment a specific stock value & set last used date
-db.userHoldings.update({ email: 'test@test.com' },
-{
-  $inc: {
-    "portfolio.APPL": 7
-  },
-  $set: {
-    date: Date()
-  }
-})
-
-db.userHoldings.find({ email: 'test@test.com' })
-
-https://flask-pymongo.readthedocs.io/en/latest/
 """
 from flask import Flask
 from flask import jsonify
@@ -54,8 +21,8 @@ from bson import ObjectId
 from pymongo import MongoClient
 import os
 import datetime
-
 from dotenv import load_dotenv
+
 load_dotenv()
 # Connect with Mongodb Atlas
 client = MongoClient(os.getenv("MONGO_STRING"))
@@ -81,14 +48,14 @@ def cash_update(email):
   myCursor = db.users.find( {"email": email} )
   return jsonify(round(myCursor[0]['cash'],2))
 
-# Route to portolfio
+# Route to portfolio
 @app.route('/portfolioUpdate/<email>')
 def portfolio_update(email):
   myCursor = db.users.find( {"email": email} )
   totalSum = 0
   for i in range(len(myCursor[0]['portfolio'])):
       totalSum += myCursor[0]['portfolio'][i]['currentPrice'] * myCursor[0]['portfolio'][i]['amount']
-  return jsonify(totalSum)
+  return jsonify(round(totalSum,2))
 
 # Route to portfolio UI
 @app.route("/<email>")
@@ -102,6 +69,5 @@ def transaction_history(email):
   myCursor = db.users.find( {"email": email} )
   return jsonify(myCursor[0]['history'])
 
-  
 if __name__ == "__main__":
     app.run(debug=True)

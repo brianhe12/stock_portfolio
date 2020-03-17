@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+# Function to grab stock data from IEX Cloud API
 def grab_stock_data(stock):
     iex_token = os.getenv("IEX_TOKEN")
   
