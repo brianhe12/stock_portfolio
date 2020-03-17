@@ -13,30 +13,47 @@
   top: 180px;
 }
 
+/* PORTFOLIO */
 .portfolio-label{
   position: absolute;
   left: 500px;
   top: 70px;
-  color: green;
-  font-size: 40px;
+  color: gray;
+  font-size: 15px;
   font-family: Calibri;
 }
 
+.portfolio-cash-label{
+  position: absolute;
+  left: 500px;
+  top: 120px;
+  color: #914FC3;
+  font-size: 50px;
+  font-family: Calibri;
+}
+/* BUYING POWER */
 .buying-power-label{
   position: absolute;
   left: 100px;
   top: 20px;
-  color: green;
-  font-size: 40px;
+  color: gray;
+  font-size: 15px;
   font-family: Calibri;
 }
 .cash-label{
   position: absolute;
   left: 100px;
   top: 70px;
-  color: green;
-  font-size: 40px;
+  color: #914FC3;
+  font-size: 50px;
   font-family: Calibri;
+}
+
+.purchase {
+  position: absolute;
+  left: 100px;
+  top: 148px;
+  width: 20%;
 }
 
 .transactions {
@@ -48,13 +65,6 @@
   text-align: left;
   padding: 5px;
   font-family: 'Courier New', Courier, monospace;
-}
-
-.purchase {
-  position: absolute;
-  left: 100px;
-  top: 148px;
-  width: 20%;
 }
 
 .cards {
