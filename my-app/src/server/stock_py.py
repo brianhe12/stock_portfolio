@@ -79,7 +79,7 @@ def main_function(email,stock,amount,operation):
 @app.route('/cashUpdate/<email>')
 def cash_update(email):
   myCursor = db.users.find( {"email": email} )
-  return jsonify(myCursor[0]['cash'])
+  return jsonify(round(myCursor[0]['cash'],2))
 
 # Route to portolfio
 @app.route('/portfolioUpdate/<email>')

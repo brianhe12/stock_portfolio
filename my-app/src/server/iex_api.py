@@ -19,11 +19,7 @@ def grab_stock_data(stock):
 
     # prices[0] = previous closing price, prices[1] = current price
     prices = []
-    prices.append(data["previousClose"])
-    prices.append(data["iexRealtimePrice"])
+    prices.append(round(data["previousClose"],2))
+    prices.append(round(data["iexRealtimePrice"],2))
 
     return prices
-    
-
-# a = grab_stock_data("AAPL")
-# print(a)

@@ -25,6 +25,7 @@ from dotenv import load_dotenv
 import os
 from pymongo import MongoClient
 from pprint import pprint
+import iex_api
 
 def buy_sell_stock(user,stock,amount,operation):
 
@@ -43,6 +44,14 @@ def buy_sell_stock(user,stock,amount,operation):
             "history": [],
             "cash": 5000
         })
+
+    # Grab Real-time stock data
+    stock_data = iex_api.grab_stock_data(str(stock))
+
+    # Invalid Stock Call
+    if stock_data[0] == -1 and stock_data[1] == -1:
+        return
+
     if operation == "Sell":
         amount = amount * -1
 
@@ -63,12 +72,12 @@ def buy_sell_stock(user,stock,amount,operation):
     # If query does not exist & we try to buy, add it in
     elif exists == None and operation == "Buy":
         # Error check users cash
-        if db.users.find( {"email": user} )[0]['cash'] - 100 * amount < 0:
+        if db.users.find( {"email": user} )[0]['cash'] - stock_data[1] * amount < 0:
             return "Unable to Buy"
 
         # If we have enough cash, then we can buy #SUCCESS
-        db.users.update({"email": "a@a.com"}, {"$inc":{"cash": -100 * amount,}} )
-        db.users.update_one({"email": user}, {"$push":{"portfolio": { "symbol": stock,"amount" : amount,"currentPrice": 100 }}})
+        db.users.update({"email": "a@a.com"}, {"$inc":{"cash": - stock_data[1] * amount,}} )
+        db.users.update_one({"email": user}, {"$push":{"portfolio": { "symbol": stock,"amount" : amount,"currentPrice": stock_data[1] }}})
         db.users.update_one({"email": user}, {"$push":{"history": { "stock": stock,"transaction" : operation,"numShares": amount, "pricePerShare": 338, "Time": str(datetime.datetime.utcnow())}}})
         return db.users.find_one({"email": user})
 
@@ -79,10 +88,10 @@ def buy_sell_stock(user,stock,amount,operation):
             index = i
             break
     # Error check users cash
-    if db.users.find( {"email": user} )[0]['cash'] - 100*amount < 0:
+    if db.users.find( {"email": user} )[0]['cash'] - stock_data[1] * amount < 0:
         return "Unable to Buy"
 
-    db.users.update({"email": user}, {"$inc":{"cash": -100 * amount,}} )
+    db.users.update({"email": user}, {"$inc":{"cash": - stock_data[1] * amount,}} )
     db.users.update_one({"email": user}, {"$inc":{"portfolio." + str(index) +".amount": amount}})
     db.users.update_one({"email": user}, {"$push":{"history": { "stock": stock,"transaction" : operation,"numShares": amount, "pricePerShare": 338, "Time": str(datetime.datetime.utcnow())}}})
     return db.users.find_one({"email": user})
@@ -123,3 +132,7 @@ def buy_sell_stock(user,stock,amount,operation):
 # print (result[0]['cash'])
 
 # pprint(buy_sell_stock("a@a.com","APPL",550,"Buy"))
+
+# myCursor = db.users.find( {"email": "a@a.com"} )
+# print(round(myCursor[0]['cash'],2))
+#return jsonify(myCursor[0]['cash'])
