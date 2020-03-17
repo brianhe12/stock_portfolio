@@ -40,7 +40,7 @@ def buy_sell_stock(user,stock,amount,operation):
         db.users.insert_one({
             "email": user,
             "portfolio": [],
-            "date": str(datetime.datetime.utcnow()),
+            "history": [],
             "cash": 5000
         })
     if operation == "Sell":
@@ -66,11 +66,13 @@ def buy_sell_stock(user,stock,amount,operation):
         if db.users.find( {"email": user} )[0]['cash'] - 100 * amount <= 0:
             return "Unable to Buy"
 
+        # If we have enough cash, then we can buy #SUCCESS
         db.users.update({"email": "a@a.com"}, {"$inc":{"cash": -100 * amount,}} )
         db.users.update_one({"email": user}, {"$push":{"portfolio": { "symbol": stock,"amount" : amount,"currentPrice": 100 }}})
+        db.users.update_one({"email": user}, {"$push":{"history": { "stock": stock,"transaction" : operation,"numShares": amount, "pricePerShare": 338, "Time": str(datetime.datetime.utcnow())}}})
         return db.users.find_one({"email": user})
 
-    # Update if exists
+    # Update if exists #SUCCESS
     index = 0
     for i in range(len(result["portfolio"])):
         if result['portfolio'][i]['symbol'] == stock:
@@ -82,6 +84,7 @@ def buy_sell_stock(user,stock,amount,operation):
 
     db.users.update({"email": user}, {"$inc":{"cash": -100 * amount,}} )
     db.users.update_one({"email": user}, {"$inc":{"portfolio." + str(index) +".amount": amount}})
+    db.users.update_one({"email": user}, {"$push":{"history": { "stock": stock,"transaction" : operation,"numShares": amount, "pricePerShare": 338, "Time": str(datetime.datetime.utcnow())}}})
     return db.users.find_one({"email": user})
     
 

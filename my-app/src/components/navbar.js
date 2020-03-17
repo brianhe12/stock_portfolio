@@ -5,7 +5,7 @@ import app from "../base";
 const Navbar = () => {
     return (
       <div>
-        <nav class="navbar navbar-expand-sm bg-light justify-content-center">
+        <nav class="navbar navbar-expand-sm bg-light justify-content-center sticky-top">
         {/* Logout Button */}
         <Button color="danger" style={{position: 'absolute', top: 10, right: 10}} onClick={() => app.auth().signOut()}>Sign Out</Button>
         {/* Navbar */}

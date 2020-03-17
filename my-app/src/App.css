@@ -3,72 +3,68 @@
   max-width: 330px;
   padding: 15px;
   margin: auto;
-  margin-top: 130px;
+  margin-top: 0px;
   height: 100%
 }
-
+/* PORTFOLIO */
 .ag-theme-balham {
   position: absolute;
-  left: 500px;
-  top: 180px;
+  left: 14%;
+  top: 35%;
 }
 
-/* PORTFOLIO */
 .portfolio-label{
   position: absolute;
-  left: 500px;
-  top: 70px;
+  left: 26.2%;
+  top: 29%;
   color: gray;
-  font-size: 15px;
+  font-size: 18px;
   font-family: Calibri;
 }
 
 .portfolio-cash-label{
   position: absolute;
-  left: 500px;
-  top: 120px;
+  left: 25.5%;
+  top: 20%;
   color: #914FC3;
-  font-size: 50px;
+  font-size: 60px;
   font-family: Calibri;
 }
 /* BUYING POWER */
 .buying-power-label{
   position: absolute;
-  left: 100px;
-  top: 20px;
+  right: 30.5%;
+  top: 29%;
   color: gray;
-  font-size: 15px;
+  font-size: 18px;
   font-family: Calibri;
 }
 .cash-label{
   position: absolute;
-  left: 100px;
-  top: 70px;
+  right: 30%;
+  top: 20%;
   color: #914FC3;
-  font-size: 50px;
+  font-size: 60px;
   font-family: Calibri;
 }
 
 .purchase {
   position: absolute;
-  left: 100px;
-  top: 148px;
+  right: 24%;
+  top: 32%;
   width: 20%;
 }
-
-.transactions {
-  position: absolute;
-  right: 0px;
-  top: 170px;
-  border-collapse: collapse;
-  width: 40%;
-  text-align: left;
-  padding: 5px;
-  font-family: 'Courier New', Courier, monospace;
+/*BUTTON*/
+.button {
+  background-color: #914FC3;
+  color: white;
+  border-radius: 35px;
+  padding: 12px 32px;
+  left: 10%;
+  transition-duration: 0.4s;
 }
 
-.cards {
-  position: absolute;
-  left: 500px;
-  top:20px;
+.button:hover {
+  background-color: #4CAF50;
+  color: white;
 }

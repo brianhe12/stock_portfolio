@@ -2,6 +2,8 @@ import React from 'react';
 import { Component } from 'react';
 import Cards from './components/cards'
 import app from "./base";
+import Navbar from './components/navbar';
+import { Nav } from 'reactstrap';
 
 class App extends Component {
     constructor(props){
@@ -41,14 +43,9 @@ class App extends Component {
         var isLoggedIn = this.state.isLoggedIn;
         return (
             <div>
-                {/* Transition Links */}
-                <div className="text-center">
-                    <a href="/transactionhistory">Transaction History</a>
-                    <span className="p-2">|</span>
-                    <a href="/">Portfolio</a>
-                </div>
                 {/* Render if user is logged in, else do not render */}
-                {isLoggedIn ? <Cards transactionHistory={this.state.transactionHistory} /> : <center><h1>User not Logged In</h1></center>}
+                {isLoggedIn ? <Navbar/> : <center></center>}
+                {isLoggedIn ? <Cards transactionHistory={this.state.transactionHistory} /> : <center></center>}
             </div>
         );
     }

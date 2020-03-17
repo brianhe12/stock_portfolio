@@ -4,6 +4,7 @@ import app from "./base";
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import "./App.css";
 import 'bootstrap/dist/css/bootstrap.css';
+import mySvg from './images/profile_picture.svg'
 
 const SignUp = ({ history }) => {
   const handleSignUp = useCallback(async event => {
@@ -20,7 +21,9 @@ const SignUp = ({ history }) => {
   }, [history]);
 
   return (
-    <FormGroup className="signup-login-form">
+    <div>
+      <center><img src={mySvg} alt="Kiwi standing on oval" width={300} height={300}></img></center>
+      <FormGroup className="signup-login-form">
       <h1 className="text-center">Sign Up</h1>
       <form onSubmit={handleSignUp}>
         <Label>Email</Label>
@@ -36,7 +39,8 @@ const SignUp = ({ history }) => {
         <span className="p-2">|</span>
         <a href="/">Forgot Password</a>
       </div>
-    </FormGroup>
+      </FormGroup>
+    </div>
   );
 };
 

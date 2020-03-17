@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-balham.css';
+import Navbar from './components/navbar';
 
 
 function fetch_from_flask(email,stock,amount,operation){
@@ -35,7 +36,7 @@ class Home extends Component {
       operation: 'Buy',
       quantity: '',
       userEmail: app.auth().currentUser.email,
-      portfolioValue: 0,
+      portfolioValue: 1230,
       cash: 5000,
       columnDefs: [
         { headerName: "Stock", field: "symbol"},
@@ -93,14 +94,14 @@ class Home extends Component {
   render() {
     return (
       <div className="home-page">
+        <Navbar/>
         {/* Labels */}
-        <Label className="portfolio-label">Portfolio: ${this.state.portfolioValue}</Label>
-        <Label className="buying-power-label">Buying Power:</Label>
+        <Label className="portfolio-label">PORTFOLIO VALUE</Label>
+        <Label className="portfolio-cash-label">${this.state.portfolioValue}</Label>
+        <Label className="buying-power-label">BUYING POWER</Label>
         <Label className="cash-label">${this.state.cash}</Label>
-        {/* Logout Button */}
-        <Button color="danger" style={{position: 'absolute', top: 10, right: 10}} onClick={() => app.auth().signOut()}>Sign Out</Button>
         {/* Portfolio Chart */}
-        <div className="ag-theme-balham" style={ {height: '500px', width: '602px'} }>
+        <div className="ag-theme-balham" style={ {height: '240px', width: '602px'} }>
           <AgGridReact
               enableSorting={true}
               columnDefs={this.state.columnDefs}
@@ -110,23 +111,17 @@ class Home extends Component {
         {/* Functionality */}
           <form className="purchase" onSubmit={this.handleSubmit}>
             <Label>Ticker</Label>
-            <Input type="text" name="symbol" placeholder="Search for symbols" onChange={this.handleChange}/>
+            <Input type="text" name="symbol" placeholder="Search for symbols" onChange={this.handleChange}/><br></br>
             <Label>Quantity</Label>
-            <Input type="text" name="quantity" placeholder="Number of shares" onChange={this.handleChange}/>
+            <Input type="text" name="quantity" placeholder="Number of shares" onChange={this.handleChange}/><br></br>
             <Label for="trade">Trade</Label>
             <Input type="select" name="operation" onChange={this.handleChange}>
               <option value="Buy">Buy</option>
               <option value="Sell">Sell</option>
             </Input>
             <br></br>
-            <Button type="submit">Confirm</Button>
+            <center><button className="button" type="submit">Confirm</button></center>
           </form>
-        {/* Transition Links */}
-        <div className="text-center">
-          <a href="/transactionhistory">Transaction History</a>
-          <span className="p-2">|</span>
-          <a href="/">Portfolio</a>
-        </div>
       </div>
     );
   }

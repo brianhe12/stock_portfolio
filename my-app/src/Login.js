@@ -5,6 +5,7 @@ import { AuthContext } from "./Auth.js";
 import {FormGroup, Label, Input, Button } from 'reactstrap';
 import "./App.css";
 import 'bootstrap/dist/css/bootstrap.css';
+import mySvg from './images/profile_picture.svg'
 
 const Login = ({ history }) => {
   const handleLogin = useCallback(
@@ -30,7 +31,9 @@ const Login = ({ history }) => {
   }
 
   return (
-    <FormGroup className="signup-login-form">
+    <div>
+      <center><img src={mySvg} alt="Kiwi standing on oval" width={300} height={300}></img></center>
+      <FormGroup className="signup-login-form">
       <h1 className="text-center">Login</h1>
       <form onSubmit={handleLogin}>
         <Label>Email</Label>
@@ -46,7 +49,8 @@ const Login = ({ history }) => {
         <span className="p-2">|</span>
         <a href="/">Forgot Password</a>
       </div>
-    </FormGroup>
+      </FormGroup>
+    </div>
   );
 };
 

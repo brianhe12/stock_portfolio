@@ -78,15 +78,20 @@ def main_function(email,stock,amount,operation):
 # Route to cash update
 @app.route('/cashUpdate/<email>')
 def cash_update(email):
-  result = db.users.find( {"email": email} )
-  return jsonify(result[0]['cash'])
-
+  myCursor = db.users.find( {"email": email} )
+  return jsonify(myCursor[0]['cash'])
 
 # Route to fill portfolio UI
 @app.route("/<email>")
 def test_again(email):
   myCursor = db.users.find( {"email": email} )
   return jsonify(myCursor[0]['portfolio'])
+
+# Route to fill Transaction History
+@app.route('/transactionHistory/<email>')
+def transaction_history(email):
+  myCursor = db.users.find( {"email": email} )
+  return jsonify(myCursor[0]['history'])
 
   
 if __name__ == "__main__":
