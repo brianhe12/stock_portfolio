@@ -36,7 +36,7 @@ class Home extends Component {
       operation: 'Buy',
       quantity: '',
       userEmail: app.auth().currentUser.email,
-      portfolioValue: 1230,
+      portfolioValue: 0,
       cash: 5000,
       columnDefs: [
         { headerName: "Stock", field: "symbol"},
@@ -76,6 +76,15 @@ class Home extends Component {
     .then((data) => {
       console.log(data);
       this.setState({cash: data})
+    });
+
+    fetch(url + 'portfolioUpdate/' + this.state.userEmail)
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      console.log(data);
+      this.setState({portfolioValue: data})
     });
   }
 

@@ -11,10 +11,10 @@ const Navbar = () => {
         {/* Navbar */}
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="/transactionhistory">Transaction History</a>
+            <a class="nav-link" href="/">Portfolio</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/">Portfolio</a>
+            <a class="nav-link" href="/transactionhistory">Transaction History</a>
           </li>
         </ul>
         </nav>
