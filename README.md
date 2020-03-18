@@ -16,7 +16,7 @@ With Valiant, a user is able to create an account, login and start trading with 
 
 * **Back-end:** Python Flask
 
-* **Database:** Mongodb Atlas
+* **Database:** MongoDB Atlas
 
 * **Authentication:** Firebase
 
