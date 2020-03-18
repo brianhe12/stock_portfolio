@@ -1,4 +1,4 @@
-# VALIANT: A web-based stock portfolio trading application
+# VALIANT: A Web-based Stock Portfolio Trading Application
 <p align="center">
   <img src = "my-app/src/images/login.JPG">
   <img src = "my-app/src/images/profile_page.JPG">
@@ -17,6 +17,11 @@
 * **Database:** Mongodb Atlas
 
 * **Authentication:** Firebase
+
+System Diagram:
+<p align="center">
+  <img src = "my-app/src/images/stock_portfolio.png">
+</p>
 
 ### Dependencies added 
 
