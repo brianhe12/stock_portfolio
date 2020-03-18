@@ -1,10 +1,12 @@
-# VALIANT: A Web-based Stock Portfolio Trading Application
+# VALIANT: A Web-based Stock Portfolio Trading Platform
+
 <p align="center">
   <img src = "my-app/src/images/login.JPG">
   <img src = "my-app/src/images/profile_page.JPG">
   <img src = "my-app/src/images/transaction_history.JPG">
-  <img src = "my-app/src/images/stock_portfolio.png">
 </p>
+
+With Valiant, a user is able to create an account, login and start trading with stocks available on the U.S. Stock Market. On the profile page, there is a grid that shows the user's Stocks, Holdings, Current Price, and Day Change. There is also an interface for the user to buy or sell stocks given the stock symbol and the quantity of shares. The transaction history page displays a log of all actions made by the user of the platform.
 
 ### Built with
 
@@ -18,7 +20,7 @@
 
 * **Authentication:** Firebase
 
-System Diagram:
+### System Diagram:
 <p align="center">
   <img src = "my-app/src/images/stock_portfolio.png">
 </p>
