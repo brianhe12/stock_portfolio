@@ -1,7 +1,8 @@
-# Valiant: A web-based stock portfolio trading application
+# VALIANT: A web-based stock portfolio trading application
 
-npm install -g create-react-app
-create-react-app my-app
+<img src = "my-app/src/images/login.JPG">
+<img src = "my-app/src/images/profile_page.JPG">
+<img src = "my-app/src/images/transaction_history.JPG">
 
 ### Dependencies added 
 
