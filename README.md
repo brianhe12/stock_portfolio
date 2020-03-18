@@ -5,6 +5,18 @@
   <img src = "my-app/src/images/transaction_history.JPG">
 </p>
 
+### Built with
+
+* **Python** 3.7.7
+
+* **Front-end:** Reactjs
+
+* **Back-end:** Python Flask
+
+* **Database:** Mongodb Atlas
+
+* **Authentication:** Firebase
+
 ### Dependencies added 
 
 npm install --save firebase
@@ -19,7 +31,7 @@ npm install reactstrap
 
 npm install --save ag-grid-community ag-grid-react react-dom-factories
 
-# current pip is version 19.2.3
+### current pip is version 19.2.3
 pip install flask
 
 pip install pymongo
