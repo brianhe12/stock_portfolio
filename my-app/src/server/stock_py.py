@@ -1,17 +1,3 @@
-"""
-NOSQL DataBase - data stored as documents, in json-like syntax
-
-Relationship database - need to map out everything
-NoSql - don need any predefined structuring before building application
-- NoSql easier to scale than SQL or other relationship databases,
-example: Mysql, postgres, oracle -> Store data in rows and columns
-NoSQL- store data in collections of documents
-Much faster in most operations, especially with a lot of data 
-
-Cheat Sheet
-https://gist.github.com/bradtraversy/f407d642bdc3b31681bc7e56d95485b6
-
-"""
 from flask import Flask
 from flask import jsonify
 from flask_cors import CORS

@@ -83,12 +83,3 @@ def buy_sell_stock(user,stock,amount,operation):
     db.users.update_one({"email": user}, {"$push":{"history": { "stock": stock,"transaction" : operation,"numShares": amount, "pricePerShare": 338, "Time": str(datetime.datetime.utcnow())}}})
     
     return db.users.find_one({"email": user})
-    
-# Testing---------
-# load_dotenv()
-# client = MongoClient(os.getenv("MONGO_STRING"))
-# db=client.userHoldings
-
-# myCursor = db.users.find( {"email": "a@a.com"} )
-# print(round(myCursor[0]['cash'],2))
-#return jsonify(myCursor[0]['cash'])
