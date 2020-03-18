@@ -1,4 +1,4 @@
-# stock_portfolio
+# Valiant: A web-based stock portfolio trading application
 
 npm install -g create-react-app
 create-react-app my-app
