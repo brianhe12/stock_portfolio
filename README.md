@@ -1,8 +1,9 @@
 # VALIANT: A web-based stock portfolio trading application
-
-<img src = "my-app/src/images/login.JPG">
-<img src = "my-app/src/images/profile_page.JPG">
-<img src = "my-app/src/images/transaction_history.JPG">
+<p align="center">
+  <img src = "my-app/src/images/login.JPG">
+  <img src = "my-app/src/images/profile_page.JPG">
+  <img src = "my-app/src/images/transaction_history.JPG">
+</p>
 
 ### Dependencies added 
 
