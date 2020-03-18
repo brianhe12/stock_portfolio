@@ -3,6 +3,7 @@
   <img src = "my-app/src/images/login.JPG">
   <img src = "my-app/src/images/profile_page.JPG">
   <img src = "my-app/src/images/transaction_history.JPG">
+  <img src = "my-app/src/images/stock_portfolio.png">
 </p>
 
 ### Built with
