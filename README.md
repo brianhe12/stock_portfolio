@@ -2,6 +2,8 @@
 
 With Valiant, a user is able to create an account, login and start trading with stocks available on the U.S. Stock Market. On the profile page, there is a grid that shows the user's current stocks, number of holdings, current price, and day change of their respective stocks. There is also an interface for the user to buy or sell stocks given the stock symbol and the quantity of shares. The transaction history page displays a log of all actions made by the user of the platform.
 
+[Instructions for Running VALIANT locally](https://github.com/brianhe12/stock_portfolio#instructions-for-running-valiant-locally)
+
 <p align="center">
   <img src = "my-app/src/images/login.JPG">
   <img src = "my-app/src/images/profile_page.JPG">
@@ -127,5 +129,10 @@ python flask_py.py
 http://localhost:3000/login should automatically run in your browser but if it doesn't, please click the link.
 
 ***Please run on Google Chrome. Internet Explorer seems to have issues rendering. Thank you!***
+
+### A few things I would like to improve on:
+* A more responsive CSS, with ability to adjust to many different screen sizes. Users may have to zoom out a bit if their screen size is too small for the application :(.
+* Fix the refresh on Buy/Sell function. I believe that a more seamless transition from buying/selling a stock to the neutral state of displaying the portfolio chart will improve user experience.
+
 
 
