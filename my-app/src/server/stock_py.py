@@ -17,6 +17,11 @@ db=client.userHoldings
 app = Flask(__name__)
 CORS(app)
 
+# Prevent issue with Heroku
+@app.route('/')
+def default_route():
+  return "Hello World"
+  
 # Route to buy/sell
 @app.route('/<email>/<stock>/<int:amount>/<operation>', methods=['GET'])
 def main_function(email,stock,amount,operation):
