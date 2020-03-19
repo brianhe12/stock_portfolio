@@ -2,6 +2,8 @@
 
 With Valiant, a user is able to create an account, login and start trading with stocks available on the U.S. Stock Market. On the profile page, there is a grid that shows the user's current stocks, number of holdings, current price, and day change of their respective stocks. There is also an interface for the user to buy or sell stocks given the stock symbol and the quantity of shares. The transaction history page displays a log of all actions made by the user of the platform.
 
+[Instructions on Running VALIANT locally](https://github.com/brianhe12/stock_portfolio#instructions-for-running-valiant-locally)
+
 <p align="center">
   <img src = "my-app/src/images/login.JPG">
   <img src = "my-app/src/images/profile_page.JPG">
