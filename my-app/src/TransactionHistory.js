@@ -20,7 +20,7 @@ class App extends Component {
                 this.setState({
                     isLoggedIn: true,
                 });
-                var url = 'http://127.0.0.1:5000/transactionHistory/' + user.email;
+                var url = 'https://stock-portfolio-flask.herokuapp.com/transactionHistory/' + user.email;
                 fetch(url)
                 .then(res => res.json())
                 .then((data) => {

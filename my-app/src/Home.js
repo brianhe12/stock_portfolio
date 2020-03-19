@@ -10,7 +10,7 @@ import 'ag-grid-community/dist/styles/ag-theme-balham.css';
 import Navbar from './components/navbar';
 
 function fetch_from_flask(email,stock,amount,operation){
-  var url = 'http://127.0.0.1:5000/' + email + '/' + stock + '/' + amount + '/' + operation;
+  var url = 'https://stock-portfolio-flask.herokuapp.com/' + email + '/' + stock + '/' + amount + '/' + operation;
   fetch(url, {
     headers : { 
       'Content-Type': 'application/json',
@@ -64,7 +64,7 @@ class Home extends Component {
 
   // Backend calls to Flask
   componentDidMount() {
-    var url = 'http://127.0.0.1:5000/';
+    var url = 'https://stock-portfolio-flask.herokuapp.com/';
     fetch(url + this.state.userEmail)
     .then((response) => {
       return response.json();

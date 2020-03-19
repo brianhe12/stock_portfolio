@@ -10,13 +10,13 @@
 
 /* PORTFOLIO */
 .ag-theme-balham {
-  position: fixed;
+  position: absolute;
   left: 10%;
   top: 35%;
 }
 
 .portfolio-label{
-  position: fixed;
+  position: absolute;
   left: 26.2%;
   top: 29%;
   color: gray;
@@ -25,7 +25,7 @@
 }
 
 .portfolio-cash-label{
-  position: fixed;
+  position: absolute;
   left: 25.5%;
   top: 20%;
   color: #914FC3;
@@ -35,7 +35,7 @@
 
 /* BUYING POWER */
 .buying-power-label{
-  position: fixed;
+  position: absolute;
   right: 30.5%;
   top: 29%;
   color: gray;
@@ -44,7 +44,7 @@
 }
 
 .cash-label{
-  position: fixed;
+  position: absolute;
   right: 30%;
   top: 20%;
   color: #914FC3;
@@ -53,7 +53,7 @@
 }
 
 .purchase {
-  position: fixed;
+  position: absolute;
   right: 24%;
   top: 32%;
   width: 20%;
