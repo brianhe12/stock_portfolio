@@ -10,8 +10,6 @@ With Valiant, a user is able to create an account, login and start trading with 
 
 ### Built with
 
-* **Python** 3.7.7
-
 * **Front-end:** Reactjs
 
 * **Back-end:** Python Flask
@@ -57,3 +55,77 @@ pip install python-dotenv
 pip install -U flask-cors
 
 pip install requests
+
+# Instructions for running VALIANT locally
+
+Developed with Node v11.3.0 and Python 3.8.1 on Windows 10 OS. Please have both Node and Python installed before proceeding. To find your personal node and python versions, run commands
+
+```
+node -v
+python -v
+```
+[Node Download link](https://nodejs.org/en/download/)
+
+[Python Download Link](https://www.python.org/downloads/)
+
+### Create these two .env's for in these following directories directories
+
+This first .env file holds my firebase authentication keys. 
+```
+# stock_portfolio/my-app/.env 
+REACT_APP_FIREBASE_************
+REACT_APP_FIREBASE_AUTH_DOMAIN=************
+REACT_APP_FIREBASE_DATABASE_URL=************
+REACT_APP_FIREBASE_PROJECT_ID=************
+REACT_APP_FIREBASE_STORAGE_BUCKET=************
+REACT_APP_FIREBASE_MSG_SENDER_ID=************
+REACT_APP_FIREBASE_APP_ID=************
+REACT_APP_FIREBASE_MEASUREMENT_ID=************
+```
+
+This second .env file holds keys to connect to my MongoDB Atlas server and the API keys for IEX Finance. 
+```
+# stock_portfolio/my-app/src/server/.env
+MONGO_STRING="************"
+IEX_TOKEN="************"
+```
+
+### Run the following commands to install dependencies.
+
+### Front-end
+```
+# stock_portfolio/my-app
+npm install
+```
+
+### Back-end 
+```
+# Run in root directory where requirements.txt is located: stock_portfolio/
+pip install -r requirements.txt 
+```
+
+
+### Now we are ready to start up the back-end and front-end servers! Run the following two commands below in their following directories!
+
+### Front-end 
+```
+# stock_portfolio/my-app
+npm start
+```
+
+### Back-end 
+
+```
+# stock_portfolio/my-app/src/server
+python flask_py.py
+```
+
+***Please run on Google Chrome. Internet Explorer seems to have issues rendering. Thank you!***
+
+<p align="center">
+  <img src = "my-app/src/images/server_start.JPG">
+</p>
+
+
+
+
