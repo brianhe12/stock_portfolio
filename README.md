@@ -68,9 +68,9 @@ python -v
 
 [Python Download Link](https://www.python.org/downloads/)
 
-### Create these two .env's for in these following directories directories
+### Create these two .env's for in these following directories directories. You will have to generate your own API keys.
 
-This first .env file holds my firebase authentication keys. 
+This first .env file holds my [Firebase Authentication](https://firebase.google.com/) keys. 
 ```
 # stock_portfolio/my-app/.env 
 REACT_APP_FIREBASE_************
@@ -83,7 +83,7 @@ REACT_APP_FIREBASE_APP_ID=************
 REACT_APP_FIREBASE_MEASUREMENT_ID=************
 ```
 
-This second .env file holds keys to connect to my MongoDB Atlas server and the API keys for IEX Finance. 
+This second .env file holds keys to connect to my [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) server and the keys for [IEX Cloud API](https://iexcloud.io/). 
 ```
 # stock_portfolio/my-app/src/server/.env
 MONGO_STRING="************"
