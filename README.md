@@ -58,7 +58,7 @@ pip install requests
 
 # Instructions for running VALIANT locally
 
-Developed with Node v11.3.0 and Python 3.8.1 on Windows 10 OS. Please have both Node and Python installed before proceeding. To find your personal node and python versions, run commands
+Developed with Node v11.3.0 and Python 3.8.1 on Windows 10 OS. Please have both Node and Python installed before proceeding. To find your personal node and python versions, run commands:
 
 ```
 node -v
@@ -73,7 +73,7 @@ python -v
 This first .env file holds my [Firebase Authentication](https://firebase.google.com/) keys. 
 ```
 # stock_portfolio/my-app/.env 
-REACT_APP_FIREBASE_************
+REACT_APP_FIREBASE_KEY=************
 REACT_APP_FIREBASE_AUTH_DOMAIN=************
 REACT_APP_FIREBASE_DATABASE_URL=************
 REACT_APP_FIREBASE_PROJECT_ID=************
