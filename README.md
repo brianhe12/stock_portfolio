@@ -120,12 +120,12 @@ npm start
 python flask_py.py
 ```
 
-***Please run on Google Chrome. Internet Explorer seems to have issues rendering. Thank you!***
-
 <p align="center">
   <img src = "my-app/src/images/server_start.JPG">
 </p>
 
+http://localhost:3000/login should automatically run in your browser but if it doesn't, please click the link.
 
+***Please run on Google Chrome. Internet Explorer seems to have issues rendering. Thank you!***
 
 
