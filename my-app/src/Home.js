@@ -112,16 +112,16 @@ class Home extends Component {
         {/* Labels */}
         <Label className="portfolio-label">PORTFOLIO VALUE</Label>
         <Label className="portfolio-cash-label">${this.state.portfolioValue}</Label>
-        <Label className="buying-power-label">BUYING POWER</Label>
-        <Label className="cash-label">${this.state.cash}</Label>
         {/* Portfolio Chart */}
-        <div className="ag-theme-balham">
+        <div className="ag-theme-balham" >
           <AgGridReact
               enableSorting={true}
               columnDefs={this.state.columnDefs}
               rowData={this.state.rowData}>
           </AgGridReact>
         </div>
+        <Label className="buying-power-label">BUYING POWER</Label>
+        <Label className="cash-label">${this.state.cash}</Label>
         {/* Functionality */}
           <form className="purchase" onSubmit={this.handleSubmit}>
             <Label>Ticker</Label>
