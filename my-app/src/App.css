@@ -13,6 +13,8 @@
   position: absolute;
   left: 10%;
   top: 35%;
+  height: 231px;
+  width: 802px;
 }
 
 .portfolio-label{
@@ -65,7 +67,6 @@
   color: white;
   border-radius: 35px;
   padding: 12px 32px;
-  left: 10%;
   transition-duration: 0.4s;
 }
 
