@@ -58,7 +58,7 @@ def buy_sell_stock(user,stock,amount,operation):
         # If user has enough cash, then we can execute their order.
         db.users.update({"email": "a@a.com"}, {"$inc":{"cash": - stock_data[1] * amount,}} )
         db.users.update_one({"email": user}, {"$push":{"portfolio": { "symbol": stock,"amount" : amount,"currentPrice": stock_data[1], "dayChange": round(stock_data[1]-stock_data[0],2) }}})
-        db.users.update_one({"email": user}, {"$push":{"history": { "stock": stock,"transaction" : operation,"numShares": amount, "pricePerShare": stock_data[1], "Time": str(datetime.datetime.utcnow())}}})
+        db.users.update_one({"email": user}, {"$push":{"history": { "stock": stock,"transaction" : operation,"numShares": amount, "pricePerShare": stock_data[1], "Time": str(datetime.datetime.utcnow())[0:len(str(datetime.datetime.utcnow()))-4]}}})
         return db.users.find_one({"email": user})
 
     # User exists. Execute their order.
@@ -80,6 +80,6 @@ def buy_sell_stock(user,stock,amount,operation):
     db.users.update_one({"email": user}, {"$inc":{"portfolio." + str(index) +".amount": amount}})
 
     # Add transaction into history
-    db.users.update_one({"email": user}, {"$push":{"history": { "stock": stock,"transaction" : operation,"numShares": amount, "pricePerShare": 338, "Time": str(datetime.datetime.utcnow())}}})
+    db.users.update_one({"email": user}, {"$push":{"history": { "stock": stock,"transaction" : operation,"numShares": amount, "pricePerShare": stock_data[1], "Time": str(datetime.datetime.utcnow())}}})
     
     return db.users.find_one({"email": user})

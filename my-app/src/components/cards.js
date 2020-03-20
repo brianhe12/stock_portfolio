@@ -15,8 +15,8 @@ const Cards = ({ transactionHistory }) => {
               <h5 class="card-title">{data.stock}</h5>
               <h6 class="card-subtitle mb-2 text-muted">Market {data.transaction}</h6>
               <p class="card-text">{data.numShares} Shares</p>
-              <p class="card-text">${data.pricePerShare}</p>
-              <p class="card-text">Filled {data.Time}, EST</p>
+              <p class="card-text">${data.pricePerShare} per share</p>
+              <p class="card-text">Filled {data.Time} </p>
             </div>
           </div>
         ))}
