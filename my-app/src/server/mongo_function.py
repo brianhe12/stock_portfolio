@@ -83,3 +83,10 @@ def buy_sell_stock(user,stock,amount,operation):
     db.users.update_one({"email": user}, {"$push":{"history": { "stock": stock,"transaction" : operation,"numShares": amount, "pricePerShare": stock_data[1], "Time": str(datetime.datetime.utcnow())}}})
     
     return db.users.find_one({"email": user})
+
+# TESTING
+# load_dotenv()
+# # Connect with Mongodb Atlas.
+# client = MongoClient(os.getenv("MONGO_STRING"))
+# db=client.userHoldings
+# buy_sell_stock("a@a.com","AAPL",2,"Buy")
