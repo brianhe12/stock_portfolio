@@ -8,6 +8,7 @@ from pymongo import MongoClient
 import os
 import datetime
 from dotenv import load_dotenv
+import iex_api
 
 app = Flask(__name__)
 CORS(app)
@@ -75,6 +76,18 @@ def test_again(email):
   False,
   True
   )
+
+  # For every item, use API function to find and update stock data
+  for item in myCursor[0]['portfolio']:
+      stock_data = iex_api.grab_stock_data(item['symbol'])
+      db.users.update(
+          {"email": email, "portfolio.symbol": item['symbol']},
+          {"$set": {"portfolio.$.currentPrice" : stock_data[1]} },
+      )
+      db.users.update(
+          {"email": email, "portfolio.symbol": item['symbol']},
+          {"$set": {"portfolio.$.dayChange": round(stock_data[1]-stock_data[0],2)} } 
+      )
 
   return jsonify(myCursor[0]['portfolio'])
 
