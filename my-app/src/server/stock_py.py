@@ -32,7 +32,7 @@ def main_function(email,stock,amount,operation):
         if isinstance(o, ObjectId):
             return str(o)
         return json.JSONEncoder.default(self, o)
-        
+
   return JSONEncoder().encode(mongo_function.buy_sell_stock(email,stock,amount,operation))
 
 # Route to cash 
@@ -66,6 +66,15 @@ def test_again(email):
   client = MongoClient(os.getenv("MONGO_STRING"))
   db=client.userHoldings
   myCursor = db.users.find( {"email": email} )
+
+  # Remove elements with no holdings
+  db.users.update(
+    {"email": email},
+    {"$pull": { "portfolio" : {"amount": 0 } } },
+  False,
+  True
+  )
+
   return jsonify(myCursor[0]['portfolio'])
 
 # Route to Transaction History
