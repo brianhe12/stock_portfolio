@@ -23,6 +23,7 @@ def default_route():
 # Route to buy/sell
 @app.route('/<email>/<stock>/<int:amount>/<operation>', methods=['GET'])
 def main_function(email,stock,amount,operation):
+  stock = stock.upper()
   load_dotenv()
   # Connect with Mongodb Atlas
   client = MongoClient(os.getenv("MONGO_STRING"))
