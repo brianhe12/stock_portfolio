@@ -8,7 +8,7 @@ import iex_api
 
 # Function handles all the intricacies invovled in querying our Mongodb cloud instance
 def buy_sell_stock(user,stock,amount,operation):
-
+    
     load_dotenv()
     # Connect with Mongodb Atlas.
     client = MongoClient(os.getenv("MONGO_STRING"))
