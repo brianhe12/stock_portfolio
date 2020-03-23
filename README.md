@@ -134,7 +134,8 @@ http://localhost:3000/login should automatically run in your browser but if it d
 * A more responsive CSS, with ability to adjust to many different screen sizes. Users may have to zoom out a bit if their screen size is too small for the application :(.
 * Fix the refresh on Buy/Sell function. I believe that a more seamless transition from buying/selling a stock to the neutral state of displaying the portfolio chart will improve user experience.
 * Though functionality works, it would be better user experience to show error messages for when users do something invalid (e.g. Buy a stock that is too expensive, Try to buy using an invalid ticker, etc.)
-* Heroku server sometimes falls asleep with no activity. This leads to a bug when trying to buy/sell.
+* Because I am using Heroku server free tier, the website will fall asleep when there is 30 minutes of no activity. Start up after the server falls asleep will take a bit of time.
+
 
 
 
