@@ -87,4 +87,6 @@ def buy_sell_stock(user,stock,amount,operation):
 # # Connect with Mongodb Atlas.
 # client = MongoClient(os.getenv("MONGO_STRING"))
 # db=client.userHoldings
-# buy_sell_stock("a@a.com","AAPL",2,"Buy")
+
+
+
