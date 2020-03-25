@@ -4,6 +4,8 @@ With Valiant, a user is able to create an account, login and start trading with 
 
 [Instructions for Running VALIANT locally](https://github.com/brianhe12/stock_portfolio#instructions-for-running-valiant-locally)
 
+***IMPORTANT: When trying to visit the Valiant website, please wake up the [back-end server](http://stock-portfolio-flask.herokuapp.com/) first by visiting the page and letting it load. Then go on the [platform](https://valiant-stock-portfolio.herokuapp.com/) and begin trading. The reason we have to do this is because both the front-end and the back-end are hosted on [Heroku](http://heroku.com/), which falls asleep after 30 minutes of inactivity. Both the front-end and the back-end have to be awake for correct functionality.*** 
+
 <p align="center">
   <img src = "my-app/src/images/login.JPG">
   <img src = "my-app/src/images/profile_page.JPG">
@@ -134,7 +136,7 @@ http://localhost:3000/login should automatically run in your browser but if it d
 * A more responsive CSS, with ability to adjust to many different screen sizes. Users may have to zoom out a bit if their screen size is too small for the application :(.
 * Fix the refresh on Buy/Sell function. I believe that a more seamless transition from buying/selling a stock to the neutral state of displaying the portfolio chart will improve user experience.
 * Though functionality works, it would be better user experience to show error messages for when users do something invalid (e.g. Buy a stock that is too expensive, Try to buy using an invalid ticker, etc.)
-* Because I am using Heroku server free tier, the website will fall asleep when there is 30 minutes of no activity. Start up after the server falls asleep will take a bit of time.
+* Because I am using Heroku server free tier, the website will fall asleep when there is 30 minutes of no activity. Start up after the server falls asleep will take a bit of time. Hosting on a paid service would solve this issue.
 
 
 
