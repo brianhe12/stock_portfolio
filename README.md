@@ -4,7 +4,7 @@ With Valiant, a user is able to create an account, login and start trading with 
 
 [Instructions for Running VALIANT locally](https://github.com/brianhe12/stock_portfolio#instructions-for-running-valiant-locally)
 
-***IMPORTANT: When trying to visit the Valiant website, please wake up the [back-end server](http://stock-portfolio-flask.herokuapp.com/) first by visiting the page and letting it load. Then go on the [platform](https://valiant-stock-portfolio.herokuapp.com/) and begin trading. The reason we have to do this is because both the front-end and the back-end are hosted on [Heroku](http://heroku.com/), which falls asleep after 30 minutes of inactivity. Both the front-end and the back-end have to be awake for correct functionality.*** 
+***IMPORTANT: When trying to visit the Valiant website, please wake up the [back-end server](http://stock-portfolio-flask.herokuapp.com/) first by visiting the page and letting it load. Then go on the [platform](https://valiant-stock-portfolio.herokuapp.com/) and begin trading. The reason we have to do this is because both the front-end and the back-end are hosted on [Heroku](http://heroku.com/), [which falls asleep after 30 minutes of inactivity](https://devcenter.heroku.com/articles/free-dyno-hours#dyno-sleeping). Both the front-end and the back-end have to be awake for correct functionality.*** 
 
 <p align="center">
   <img src = "my-app/src/images/login.JPG">
